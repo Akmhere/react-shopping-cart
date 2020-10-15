@@ -1,8 +1,9 @@
 //feature-1
-import React from 'react';
+import React, { Component } from 'react';
 import Filter from './components/Filter';
 import products from './components/Products';
-import Products from './components/Products'
+import Products from './components/Products';
+import Cart from './components/Cart';
 import data from './data.json';
 
 
@@ -12,16 +13,40 @@ class App extends React.Component {
     super();
     this.state = {
       products : data.products,
+      cartItems : [],
       size : "",
       sort : ""
     };
+  }
+  addToCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    let alreadyInCart = false;
+    cartItems.forEach((item) => {
+      if(item._id === product._id)
+      {
+        item.count++;
+        alreadyInCart = true;
+      }
+    });
+    if(alreadyInCart === false ){
+      cartItems.push({ ...product , count: 1 });
+    }
+    this.setState({cartItems});
+  }
+  removeFromCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    this.setState ( { 
+      cartItems : cartItems.filter( (x) => (x._id) !== (product._id))
+    });
   }
   sortProducts = (event) => {
        const sortt = (event.target.value);
        this.setState((state)=>  ({
          sort : sortt,
          products : this.state.products.slice().sort((a,b) => (
-           sortt === "highest"
+            
+         
+          sortt === "highest"
            ? a.price < b.price
               ? 1 : -1
            : sortt === "lowest"
@@ -66,9 +91,13 @@ class App extends React.Component {
                         filterProducts={this.filterProducts}
                         sortProducts={this.sortProducts}
                 ></Filter>
-                <Products products={this.state.products} ></Products>
+                <Products products={this.state.products} 
+                          addToCart = {this.addToCart} ></Products>
             </div>
-            <div className="sidebar" >cart-items</div>
+            <div className="sidebar" >
+              <Cart cartItems = {this.state.cartItems}
+                    removeFromCart={this.removeFromCart} />
+            </div>
           </div>
         </main>
         <footer>All rights reserved</footer>
