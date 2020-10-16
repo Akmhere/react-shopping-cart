@@ -82,7 +82,7 @@ footer {
 }
 .products li {
   flex: 0 1 29rem;
-  height: 47rem;
+  height: 50rem;
   padding: 1rem;
 }
 .product {
@@ -137,6 +137,7 @@ footer {
   padding: 1rem;
   margin: 1rem;
   display: flex;
+  margin-top: 1.35rem;
 }
 .cart-header {
   border-bottom: 0.1rem #c0c0c0 solid;

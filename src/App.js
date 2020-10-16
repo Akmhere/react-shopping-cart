@@ -109,7 +109,12 @@ class App extends React.Component {
             </div>
           </div>
         </main>
-        <footer>All rights reserved</footer>
+        <footer>
+    All rights reserved &#169; AKM
+          
+          
+                 
+               </footer>
       </div>
     );
 
