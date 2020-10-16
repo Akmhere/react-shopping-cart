@@ -5,7 +5,7 @@ import products from './components/Products';
 import Products from './components/Products';
 import Cart from './components/Cart';
 import data from './data.json';
-
+import Fade from 'react-reveal/Fade';
 
 class App extends React.Component {
 
@@ -67,7 +67,7 @@ class App extends React.Component {
     console.log(event.target.value);
     if(event.target.value === "")
     {
-      this.setState({size: event.target.value , products : data.products});
+      this.setState({size: event.target.value , products : data.products , sort : " "});
     }
     else{
       this.setState({
@@ -75,7 +75,8 @@ class App extends React.Component {
         products : data.products.filter(
           (product) => (product.availableSizes.indexOf(event.target.value)>= 0 )
         ) ,
-        sort : ""
+        sort : "" ,
+
             
       });
     }
@@ -83,10 +84,12 @@ class App extends React.Component {
   }
   render(){
     return (
+      
       <div className="grid-container">
+        <Fade left cascade>
         <header>
-          <a href="/">React Shopping Cart</a>
-        </header>
+         <a href="/">React Shopping Cart</a> </header>
+        </Fade>
         <main>
           <div className= "content">
             <div className="main" >
