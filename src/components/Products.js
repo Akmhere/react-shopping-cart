@@ -45,7 +45,7 @@ export default class products extends Component {
                 </ul>
                 </Fade>
                     {
-                        product && (
+                        this.state.product && (
                             <Modal isOpen = {true }
                             onRequestClose = {this.closeModal}>
                                 <Zoom>

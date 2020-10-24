@@ -230,15 +230,30 @@ input {
   justify-content: space-between;
   align-items: center;
 }
+.order-details ul {
+  text-align: left;
+  padding: 0;
+}
 .order-details li div {
   padding: 10px;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: medium;
 }
 .order-details .items {
-  text-align: right;
+  text-align: left;
   padding: 0;
+}
+tr{
+ margin: 3px;
 }
 .success-message {
   color: green;
+  font-family: 'Jura', sans-serif;
+}
+.fa-check-circle{
+  color: green;
+  
+ 
 }
 /* Orders */
 .orders {
